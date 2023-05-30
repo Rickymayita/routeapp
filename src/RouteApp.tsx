@@ -1,4 +1,4 @@
-import { PlacesProvider } from "./context/places/PlacesProvider"
+import { PlacesProvider } from './context'
 
 
 export const RouteApp = () => {

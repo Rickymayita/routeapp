@@ -1,13 +1,10 @@
-import { createContext } from "react";
+import { createContext } from 'react';
 
 
 export interface PlacesContextProps {
-    isloading: boolean;
-    useLocation?: [number, number]
+    isLoading: boolean;
+    useLocation?: [number, number];
 }
-
-
-
 
 
 
