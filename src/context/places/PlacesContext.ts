@@ -3,7 +3,7 @@ import { createContext } from 'react';
 
 export interface PlacesContextProps {
     isLoading: boolean;
-    useLocation?: [number, number];
+    userLocation?: [number, number];
 }
 
 

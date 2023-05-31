@@ -1,10 +1,12 @@
 import { PlacesProvider } from './context'
+import { HomePage } from './page'
 
+import './global.css'
 
 export const RouteApp = () => {
   return (
     <PlacesProvider>
-        <h1>Hola Yo denuevo</h1>
+        <HomePage />
     </PlacesProvider>
   )
 }
