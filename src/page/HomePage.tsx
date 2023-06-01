@@ -1,8 +1,9 @@
-import { BtnMyLocation, MapView } from "../components"
+import { BtnMyLocation, MapView, SearchBar } from "../components"
 
 export const HomePage = () => {
   return (
-    <div>      
+    <div>
+      <SearchBar />
       <MapView />
       <BtnMyLocation />
     </div>
