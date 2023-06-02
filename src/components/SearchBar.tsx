@@ -1,5 +1,6 @@
 import { ChangeEvent, useContext, useRef } from "react"
 import { PlacesContext } from "../context"
+import { SearchResults } from ".";
 
 
 export const SearchBar = () => {
@@ -12,9 +13,8 @@ export const SearchBar = () => {
         if( debounceRef.current )
         clearTimeout( debounceRef.current );
 
-        debounceRef.current = setTimeout(() => {
-            //todo: buscar o ejecutar consulta
-            seachPlacesByTerm( event.target.value);          
+        debounceRef.current = setTimeout(() => {            
+            seachPlacesByTerm( event.target.value);//todo: buscar o ejecutar consulta          
         }, 350);
     }
 
@@ -26,6 +26,8 @@ export const SearchBar = () => {
             placeholder="Find place..."
             onChange={ onQueryChange }
         />
+
+        <SearchResults />
     </div>
   )
 }
