@@ -4,14 +4,20 @@ import { getUserLocation } from "../../helpers"
 import { PlacesContext } from "./PlacesContext"
 import { seachrApi } from "../../apis";
 
+import { Feature, PlacesResponse } from "../../interfaces/places";
+
 export interface PlacesState {
   isLoading: boolean;
   userLocation?: [ number, number ];
+  isLoadingPlaces: boolean;
+  places: Feature[];
 }
 
 const INITIAL_STATE: PlacesState = {
   isLoading: true,
-  userLocation: undefined
+  userLocation: undefined,
+  isLoadingPlaces: false,
+  places: [],
 }
 
 interface Props {
@@ -28,20 +34,20 @@ export const PlacesProvider = ({ children }: Props) => {
     }, [])
 
 
-    const seachPlacesByTerm = async( query: string ) => {
+    const seachPlacesByTerm = async( query: string ): Promise<Feature[]> => {
         if( query.length === 0 ) return []; //Todo: clear state
         if(!state.userLocation)  throw new Error ('User location not found');
 
+        dispatch({ type: 'setLoadingPlaces'})
 
-        const resp = await seachrApi.get(`/${ query }.json`, {
+        const resp = await seachrApi.get<PlacesResponse>(`/${ query }.json`, {
           params:{
             proximity: state.userLocation.join(',')
           }
         });
 
-        console.log(resp.data);
-        
-        return resp.data
+          dispatch({ type: 'setPlaces', payload: resp.data.features })     
+        return resp.data.features;
     }
 
 
