@@ -5,7 +5,6 @@ import { MapContext } from './MapContext';
 import { mapReducer } from './MapReducer';
 
 import { PlacesContext } from '../';
-import { type } from 'os';
 
 
 export interface MapState{
@@ -73,10 +72,13 @@ export const MapProvider = ({ children }: Props) => {
             .addTo(  map );
 
 
-
-
         dispatch({ type: 'setMap', payload: map })
 
+    }
+
+
+    const getRouteBetweenPoints =async (start: [number, number], end: [number, number] ) => {
+        
     }
 
 
@@ -86,6 +88,7 @@ export const MapProvider = ({ children }: Props) => {
 
         // Method
         setMap,
+        getRouteBetweenPoints
     }}>
         { children }
     </MapContext.Provider>
